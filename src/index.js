@@ -7,8 +7,9 @@ module.exports = function makeExchange(currency) {
     money.N = Math.floor((currency-money.H*50-money.Q*25-money.D*10)/5);
     money.P = Math.floor(currency%5);
     for (let item in money) {
-      if (money[item]<=0) {delete money[item]}
+      if (money[item]<=0||currency>10000) {delete money[item]}
     };
+    if (currency>10000) {money.error = "You are rich, my friend! We don't have so much coins for exchange"}
     return money;
     
     // Your code goes here!
